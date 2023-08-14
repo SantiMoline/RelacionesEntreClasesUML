@@ -1,0 +1,25 @@
+@startuml Ej1
+scale 2
+class Perro {
+    -name: String
+    -breed: String
+    -age: int
+    -size: String
+}
+
+class Persona {
+    -name: String
+    -surname: String
+    -age: int
+    -document: int
+    -dog: Perro
+}
+
+class PersonaService {
+    +crearPersona(): Persona
+    +adoptarMascota(persona: Persona, mascota: Perro): boolean
+    +mostrarPersona(persona: Persona)
+}
+
+Persona "1" o- "1" Perro
+@enduml
