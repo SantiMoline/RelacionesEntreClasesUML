@@ -1,7 +1,32 @@
-package Ej2;
+
+
+import java.util.Scanner;
+import Ej2.entities.Juego;
 
 public class Ej2 {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int numOfPlayers = 7;
+        System.out.println("---Bienvenido al juego de la ruleta rusa de Agua-----");
+        
+        while(numOfPlayers > 6 || numOfPlayers < 1) {
+            System.out.println("Cuántos jugadores van a participar? (1-6)");
+            numOfPlayers = scan.nextInt();
+            scan.nextLine(); //Throwaway sacn.
+        }
+
+        Juego game = new Juego();
+        game.llenarJuego(numOfPlayers);
+
+        while(!game.ronda()) {
+            System.out.println("Esta ronda no se mojó nadie. En la siguiente se reducen las chances!!!");
+            System.out.println("Quieren hacer trampa y ver cómo está la pistola? (S/N)");
+            String opc = scan.nextLine();
+            if (opc.equalsIgnoreCase("s")) System.out.println(game.getWeapon());
+        }
+
+        System.out.println("Se terminó el juego. Espero que no quieran jugar más!");
+        scan.close();
         
     }
 }
