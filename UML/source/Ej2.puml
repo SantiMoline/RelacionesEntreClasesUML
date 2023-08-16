@@ -1,0 +1,32 @@
+@startuml Ej1
+scale 2
+
+
+class RevolverAgua {
+    -currentPos: int
+    -waterPos: int
+
+    +llenarRevolver()
+    +mojar(): boolean
+    +siguienteChorro()
+}
+
+class Jugador {
+    +{static}id: String
+    -name: String
+    -mojado: boolean
+
+    +disparo(r: RevolverAgua): boolean
+}
+
+class Juego {
+    -jugadores: ArrayList<Jugador>
+    -weapon: RevolverAgua
+
+    +llenarJuego(numOfPlayers: int)
+    +ronda(): boolean
+}
+
+Juego "1" *-- "1" RevolverAgua
+Juego "1" *-- "*" Jugador
+@enduml
