@@ -27,7 +27,13 @@ Class DiscardPile {
     +adMultipleCard(cards: ArrayList<Card>)
     +showDiscardPile()
     +cardsInDiscardPile(): int
+}
 
+enum Color {
+    ESPADAS
+    BASTOS
+    OROS
+    COPAS
 }
 
 Deck "1" o-- "*" Card
