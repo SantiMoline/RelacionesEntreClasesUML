@@ -1,0 +1,35 @@
+@startuml Ej3
+scale 2
+
+Class Card {
+    -num: int
+    -color: Color
+    +valores: int[]
+
+}
+
+Class Deck {
+    -deck: Stack<Card>
+
+    +fillDeck() 
+    +shuffle()
+    +nextCard(): Card
+    +remainingCardsInDeck(): int
+    +drawCards(num: int): ArrayList<Card>
+    +showDeck()
+    -checkRemaining(n: int): boolean
+}
+
+Class DiscardPile {
+    -discardPile: Stack<Card>
+
+    +addCard(card: Card)
+    +adMultipleCard(cards: ArrayList<Card>)
+    +showDiscardPile()
+    +cardsInDiscardPile(): int
+
+}
+
+Deck "1" o-- "*" Card
+DiscardPile "1" o-- "*" Card
+@enduml

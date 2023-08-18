@@ -54,7 +54,7 @@ public class Deck {
      * 
      * Description: Returns the number of cards remaining in the deck.
      */
-    public int remaininCardsInDeck() {
+    public int remainingCardsInDeck() {
         return this.deck.size();
     }
 

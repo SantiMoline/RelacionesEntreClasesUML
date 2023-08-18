@@ -39,7 +39,7 @@ public class Ej3 {
                     System.out.println("There are " + discardPile.cardsInDiscardPile() + " cards in the deck.");
                     break;
                 case 5:
-                    System.out.println("There are " + deck.remaininCardsInDeck() + " cards in the deck.");
+                    System.out.println("There are " + deck.remainingCardsInDeck() + " cards in the deck.");
                     break;
                 case 6: 
                     System.out.println("Showing cards remaining in the deck: ");
