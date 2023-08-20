@@ -61,11 +61,21 @@ public class DogService {
         return null;
     }
 
+    /**
+     * Checks if the dog can be adopted (its adopted field == false).
+     * @param dog   (Dog) to check adopted status.
+     * @return      (boolean) true if the Dog's adopted field is false.
+     */
     public boolean canBeAdopted(Dog dog) {
         if (dog == null) return false;
         return !dog.getAdopted();
     }
 
+    /**
+     * Check if a dog can be adopted and if so, change its adopted attribute to true. Returns true when can perfom that action.
+     * @param dog   (Dog) to be adopted
+     * @return      (boolean) Return true if the dog can be adopted 
+     */
     public boolean adoptDog(Dog dog) {
         if (canBeAdopted(dog)) {
             dog.setAdopted(true);
@@ -74,6 +84,11 @@ public class DogService {
         return false;
     }
 
+    /**
+     * Prints a Dog's information and returns true. In case of being null, returns false.
+     * @param dog   (Dog)
+     * @return      (boolean) in case the object Person was null, returns false.
+     */
     public boolean showDog(Dog dog) {
         if (dog == null) 
             return false;
