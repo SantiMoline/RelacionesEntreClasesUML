@@ -66,7 +66,7 @@ public class PersonService {
      * @param id    (int) ID to iterate over the HashSet and find a person with that id.
      * @return      (Person) the object Person with the indicated number of ID.
      */
-    public Person searchPersonByID(int id) {
+    public Person searchPersonById(int id) {
         for (Person person : persons) {
             if (person.getId() == id)
                 return person;

@@ -1,0 +1,53 @@
+@startuml EjExtra01
+scale 1
+
+Class Dog {
+    -name: String
+    -breed: String
+    -age: int
+    -size: Size
+    -adopted: boolean
+}
+
+enum Size {
+    TINY
+    SMALL
+    MEDIUM
+    BIG
+}
+
+Class DogService {
+    -dogs: ArrayList<Dog>
+
+    +registerDog(scan: Scanner)
+    +promptForSize(scan: Scanner): String
+    +searchDogByName(name: String): Dog
+    +canBeAdopted(dog: Dog): boolean
+    +adoptDog(dog: Dog): boolean
+    +showDog(dog: Dog): boolean
+}
+
+Class Person {
+    -name: String
+    -surname: String
+    -int: age
+    -int: id
+    -dog: Dog
+}
+
+Class PersonService {
+    -person: HashSet<Person>
+
+    +registerPerson(scan: Scanner)
+    +canAdopt(person: Person): boolean
+    +adoptDog(person: Person, dog: Dog): boolean
+    +searchPersonById(id: int): Person
+    +showPerson(person: Person) boolean
+    +showPeople()
+}
+
+Person "1" o-- "1" Dog
+PersonService "1" *-- "*" Person
+DogService "1" *-- "*" Dog
+Dog "1" o-- "1" Size
+

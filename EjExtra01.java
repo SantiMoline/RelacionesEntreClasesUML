@@ -141,7 +141,7 @@ public class EjExtra01 {
      */
     public static Person searchPersonById(Scanner scan) {
         int id = promptForId(scan);
-        return ps.searchPersonByID(id);
+        return ps.searchPersonById(id);
     }
 
 
