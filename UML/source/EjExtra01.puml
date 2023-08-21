@@ -38,7 +38,9 @@ Class Person {
 Class PersonService {
     -person: HashSet<Person>
 
-    +registerPerson(scan: Scanner)
+    +createPerson(scan: Scanner): Person
+    +registerPerson(Person: person): boolean
+    +updatePerson(person: Person, scan: Scanner): boolean
     +canAdopt(person: Person): boolean
     +adoptDog(person: Person, dog: Dog): boolean
     +searchPersonById(id: int): Person

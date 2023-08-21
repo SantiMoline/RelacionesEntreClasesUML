@@ -24,7 +24,7 @@ public class DogService {
         String name = scan.nextLine();
         System.out.print("Breed: ");
         String breed = scan.nextLine();
-        System.out.println("Age: ");
+        System.out.print("Age: ");
         int age = scan.nextInt();
         scan.nextLine(); //Throwaway scan.
         String size = promptForSize(scan);

@@ -20,7 +20,7 @@ public class EjExtra01 {
             int opc = promptForOption(scan);
             switch (opc) {
                 case 1:
-                    ps.registerPerson(scan);
+                    ps.registerPerson(ps.createPerson(scan));
                     break;
                 case 2:
                     ds.registerDog(scan);
@@ -33,16 +33,21 @@ public class EjExtra01 {
                     if (!ps.showPerson(searchPersonById(scan)))
                         System.out.println("There is no person with that ID in our database.");
                     break;
-                case 5:
+                case 5: 
+                    if (ps.updatePerson(searchPersonById(scan), scan)) 
+                        System.out.println("The new information has been succesfully stored.");
+                    else System.out.println("Sorry, we couldn't complete the task.");
+                    break;
+                case 6:
                     if (adopt(scan))
                         System.out.println("Congrats on the adoption! =)");
                     else 
                         System.out.println("Sorry we couldn't complete the process....");
                     break;
-                case 6:
+                case 7:
                     ps.showPeople();
                     break;
-                case 7:
+                case 8:
                     System.out.println("Thanks for coming. See you next time!");
                     active = false;
                     scan.close();
@@ -61,9 +66,10 @@ public class EjExtra01 {
         System.out.println("2. Register dog.");
         System.out.println("3. Search dog's information by name.");
         System.out.println("4. Search for a person's information by ID.");
-        System.out.println("5. Adopt a dog.");
-        System.out.println("6. Show the information of every person registered.");
-        System.out.println("7. Exit.");
+        System.out.println("5. Update person's information by ID");
+        System.out.println("6. Adopt a dog.");
+        System.out.println("7. Show the information of every person registered.");
+        System.out.println("8. Exit.");
     }
 
     /**
@@ -75,7 +81,7 @@ public class EjExtra01 {
      */
     public static int promptForOption(Scanner scan) {
         while (true) {
-            System.out.print("Please enter a valid option (1-6): ");
+            System.out.print("Please enter a valid option (1-8): ");
             if (!scan.hasNextInt()) {
                 scan.nextLine(); // To catch incorrect input from user.
                 continue;
@@ -95,7 +101,7 @@ public class EjExtra01 {
      * @return (boolean) True if the option exists.
      */
     public static boolean isInvalidOption(int opt) {
-        return opt < 1 || opt > 6;
+        return opt < 1 || opt > 8;
     }
 
     /**
@@ -164,11 +170,13 @@ public class EjExtra01 {
      */
     public static boolean adopt(Scanner scan) {
         Person p1 = searchPersonById(scan);
+        System.out.print("Enter the dog's information --> ");
         Dog d1 = searchDogByName(scan);
 
         if (ds.canBeAdopted(d1) && ps.canAdopt(p1)) {
-            ps.adoptDog(p1, d1);
             ds.adoptDog(d1);
+            ps.adoptDog(p1, d1);
+
             return true;
         }
         return false;

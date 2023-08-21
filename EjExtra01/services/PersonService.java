@@ -19,7 +19,7 @@ public class PersonService {
      * Add the created Person to the HashSet<Person> 'persons' that is an atribute of this service. (don't have repository yet.)
      * @param scan
      */
-    public void registerPerson(Scanner scan) {
+    public Person createPerson(Scanner scan) {
         System.out.print("\nName: ");
         String name = scan.nextLine();
         System.out.print("\nSurname: ");
@@ -31,7 +31,13 @@ public class PersonService {
         int id = scan.nextInt();
         scan.nextLine();//Throwaway scan.
 
-        persons.add(new Person(name, surname, age, id));
+        return (new Person(name, surname, age, id));
+    }
+
+    public boolean registerPerson(Person person) {
+        if (person == null)return false;
+        persons.add(person);
+        return true;
     }
 
     /**
@@ -96,4 +102,23 @@ public class PersonService {
         }
     }
 
+    /**
+     * Shows the old Person's information and then ask for all the new one. If the new one corresponds to the same ID, update the old information with the new one.
+     * @param person    (Person) old element in the HashSet to be updated.
+     * @param scan
+     * @return          (boolean) in case the information has been succesfully replaced.
+     */
+    public boolean updatePerson(Person person, Scanner scan) {
+        if (showPerson(person)) { //Shows person stored information and proceed, or breaks if it coudn't find Person's information
+            Person modifiedPerson = createPerson(scan);
+            modifiedPerson.setDog(person.getDog()); //Store the previous dog information in the new Person.
+            
+            if (persons.contains(modifiedPerson)) {
+                persons.remove(person);
+                persons.add(modifiedPerson);
+                return true;
+            }
+        }
+        return false;
+    }
 }
