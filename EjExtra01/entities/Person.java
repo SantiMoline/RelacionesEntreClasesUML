@@ -64,6 +64,7 @@ public class Person {
     }
 
     public void setDog(Dog dog) {
+        if (dog == null) return;
         this.dog = new Dog(dog);
         //To avoid reference trap. (Modify the object Dog in main and reference the same dog here).
     }
