@@ -1,0 +1,59 @@
+@startuml EjExtra03
+scale 1
+
+Class Spectator {
+    -name: String
+    -age: int
+    -cashAvailable: double
+}
+
+Class Movie {
+    -title: String
+    -duration: int
+    -minimumAge: int
+    -director: String
+}
+
+Class Cinema {
+    -movie: Movie
+    -price: double
+    -movieTheater: Spectator[][]
+    +{static} MAX_ROWS: int
+    +{static} MAX_COLUMNS: int
+    +{static} ROW_NUMERATION: String[]
+
+    +addSpectator(spectator: Spectator): boolean
+    +fillTheaterWithSpectators(spectators: ArrayList<Spectator>)
+    -canPayTicket(spectator: Spectator): boolean
+    +showMovieTheater()
+}
+
+Class SpectatorService {
+    -spectators: ArrayList<Spectator>
+
+    +createSpectator(scan: Scanner): Spectator
+    +registerSpectator(spectator: Spectator): boolean
+    -isInvalidAge(age: int): boolean
+    -isInvalidCash(cash: double): boolean
+    -isInvalidName(name: String): boolean
+    -promptForAge(scan: Scanner): int
+    -promptForCash(scan: Scanner): double
+    -promptForName(scan: Scanner): String
+    +showSpectators()
+}
+
+Class MovieService {
+    -movies: HashSet<Movie>
+
+    +createMovie(scan: Scanner): Movie
+    +registerMovie(movie: Movie): boolean
+    +getMovieByTitle(title: String): Movie
+    +showMovie(movie: Movie): boolean
+    +showMovies()
+}
+
+Cinema "1" o-- "1" Movie
+Cinema "1" o-- "*" Spectator
+SpectatorService "1" o-- "*" Spectator
+MovieService "1" o-- "*" Movie
+@enduml

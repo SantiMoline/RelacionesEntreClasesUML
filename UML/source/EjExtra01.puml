@@ -52,4 +52,4 @@ Person "1" o-- "1" Dog
 PersonService "1" *-- "*" Person
 DogService "1" *-- "*" Dog
 Dog "1" o-- "1" Size
-
+@enduml
