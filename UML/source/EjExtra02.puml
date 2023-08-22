@@ -1,4 +1,4 @@
-@startuml EjExtra03
+@startuml EjExtra02
 scale 1
 
 Class Spectator {
