@@ -1,5 +1,6 @@
 package EjExtra02.entities;
 
+import java.util.ArrayList;
 
 public class Cinema {
     private Movie movie;
@@ -58,6 +59,12 @@ public class Cinema {
         return true;
     }
 
+    public void fillTheaterWithSpectators(ArrayList<Spectator> spectators) {
+        for (Spectator spectator : spectators) {
+            addSpectator(spectator);   
+        }
+    }
+
     private boolean canPayTicket(Spectator spectator) {
         if (spectator == null) return false;
         return spectator.getCashAvailable() >= this.price;
@@ -70,7 +77,7 @@ public class Cinema {
                 System.out.print(ROW_NUMERATION[i] + " " + j);
                 if(movieTheater[i][j] == null)
                     System.out.print("   "); 
-                else System.out.println(" X ");
+                else System.out.print(" X ");
             }
             System.out.print("\n");
         }

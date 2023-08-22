@@ -8,9 +8,20 @@ import EjExtra02.entities.Spectator;
 public class SpectatorService {
     ArrayList<Spectator> spectators;
 
+    //Empty constructor.
     public SpectatorService() {
         spectators = new ArrayList<>();
     }
+
+
+    public ArrayList<Spectator> getSpectators() {
+        return this.spectators;
+    }
+
+    public void setSpectators(ArrayList<Spectator> spectators) {
+        this.spectators = spectators;
+    }
+
 
     public Spectator createSpectator(Scanner scan) {
         String name = promptForName(scan);
@@ -21,7 +32,7 @@ public class SpectatorService {
     }
 
     public boolean registerSpectator(Spectator spectator) {
-        if (spectator != null) return false;
+        if (spectator == null) return false;
         spectators.add(spectator);
         return true;
     }
@@ -72,6 +83,12 @@ public class SpectatorService {
             String name = scan.nextLine();
             if (isInvalidName(name)) continue;
             return name;
+        }
+    }
+
+    public void showSpectators() {
+        for (Spectator spectator : spectators) {
+            System.out.println(spectator);
         }
     }
 
