@@ -1,0 +1,88 @@
+@startuml EjExtra03
+scale 1
+
+Class Client {
+    -name: String
+    -surname: String
+    -Id: int
+    -email: String
+    -address: String
+    -phoneNumber: long
+
+
+
+}
+
+Class Vehicle {
+    -brand: String
+    -model: String
+    -year: int
+    -engineNumber: long
+    -chassisNumber: long
+    -color: String
+    -bodyType: BodyType
+
+
+
+}
+
+enum BodyType {
+    TRUCK
+    HATCHBACK
+    SEDAN
+    SUV
+}
+
+class InsurancePolicy {
+    -vehicle: Vehicle
+    -client: Client
+    -policyNumber: long
+    -startDate: DateTime
+    -endDate: DateTime
+    -insuranceDues: ArrayList<Due>
+    -numberOfDues: int
+    -paymentMethod: PaymentMethod
+    -insuredAmount: int
+    -hail: boolean
+    -maxHailAmount: int
+    -coverageType: CoverageType
+
+    +getDueByNumber(number: int): Due
+    
+}
+
+enum PaymentMethod {
+    CASH
+    DEBIT_CARD
+    CREDIT_CARD
+    BANK_TRANSFER
+    CRYPTO
+}
+
+enum CoverageType {
+    LIABILITY
+    FULL
+    COMPREHENSIVE
+}
+
+Class Due {
+    -dueNumber: int
+    -dueAmount: int
+    -hasBeenPayed: boolean
+    -expirationDate: DateTime
+    -PaymentMethod
+
+    +acceptPayment(amount: int): boolean
+
+}
+
+
+InsurancePolicy "1" o-- "1" Vehicle
+InsurancePolicy "1" o-- "1" Client
+InsurancePolicy "1" -- "1" CoverageType
+InsurancePolicy "1" -- "1" PaymentMethod
+InsurancePolicy "1" *-- "*" Due
+Due "1" -- PaymentMethod
+Vehicle "1" -- "1" BodyType
+
+@enduml
