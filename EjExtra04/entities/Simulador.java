@@ -75,8 +75,9 @@ public class Simulador {
     public void assignVote(Student votedStudent) {
         Iterator<Student> iterator = students.iterator();
         while (iterator.hasNext()) {
-            if (iterator.next().equals(votedStudent)) {
-                iterator.next().setNumberOfVotes(iterator.next().getNumberOfVotes() + 1);
+            Student actualStudent = iterator.next();
+            if (actualStudent.equals(votedStudent)) {
+                actualStudent.setNumberOfVotes(actualStudent.getNumberOfVotes() + 1);
                 return;
             }
         }
